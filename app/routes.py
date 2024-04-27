@@ -3,6 +3,7 @@ from flask import (
     request
 )
 from app.database import task
+from app.database.task import update_by_id
 app = Flask(__name__)
 
 @app.get("/tasks")
@@ -29,10 +30,10 @@ def create_task():
     task.insert(task_data)
     return "", 204
 
-@app.put("/tasks<int:pk>")
+@app.put("/tasks/<int:pk>")
 def update_task(pk):
     task_data = request.json
-    task.update(task_data, pk)
+    task.update_by_id(task_data, pk)
     return "", 204
 
 @app.delete("/tasks/<int:pk>")

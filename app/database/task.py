@@ -55,7 +55,7 @@ def update_by_id(task_data, task_id):
         task_id
     )
     statement = """
-        UPDATE TABLE task SET
+        UPDATE task SET
             name=?,
             summary=?,
             description=?,
